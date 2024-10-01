@@ -1,22 +1,27 @@
 import css from './Options.module.css';
-const Options = ({ update, reset, total }) => {
+
+const Options = ({ updateFeedback, resetFeedBack, totalFeedback }) => {
   return (
     <div className={css.options_wrap}>
-      <button className={css.goodBtn} onClick={() => update('good')}>
+      <button className={css.goodBtn} onClick={() => updateFeedback('good')}>
         Good
       </button>
-      <button className={css.neutralBtn} onClick={() => update('neutral')}>
+      <button
+        className={css.neutralBtn}
+        onClick={() => updateFeedback('neutral')}
+      >
         Neutral
       </button>
-      <button className={css.badBtn} onClick={() => update('bad')}>
+      <button className={css.badBtn} onClick={() => updateFeedback('bad')}>
         Bad
       </button>
-      {total ? (
-        <button className={css.resetBtn} onClick={reset}>
+      {Boolean(totalFeedback) && (
+        <button className={css.resetBtn} data-reset onClick={resetFeedBack}>
           Reset
         </button>
-      ) : null}
+      )}
     </div>
   );
 };
+
 export default Options;
